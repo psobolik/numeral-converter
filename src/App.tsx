@@ -1,5 +1,6 @@
 import {useRef, useState} from 'react'
 import './App.css'
+import icon from '/icon.svg'
 import Converter from "./Converter.ts";
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
 
   return (
     <div className={"container"}>
+      <img src={icon} alt="logo"/>
       <p>
         Enter a number in one box to see its alternative representation in the other.<br/>
         (Upper limit: 3999/MMMCMXCIX)
