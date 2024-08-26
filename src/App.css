@@ -1,0 +1,22 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+}
+.container label {
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+.container input {
+  font-size: 1.5rem;
+  margin: 0.5rem;
+}
