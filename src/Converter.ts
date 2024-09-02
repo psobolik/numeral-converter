@@ -7,6 +7,8 @@ export default class Converter {
   private static romanNumeralRegEx = /(?<thousands>M{1,3})?(?<hundreds>CD|CM|DC{0,3}|C{1,3})?(?<tens>|XL|XC|LX{0,3}|X{1,3})?(?<ones>|IV|IX|VI{0,3}|I{1,3})?/
 
   public static arabicToRoman = (arabicNumber: number): string => {
+    if (arabicNumber === 0 || arabicNumber >= 4000) return "";
+
     const result = new Array<string>();
 
     for (let i = 0; i < Converter.romanNumeralLookup.length && arabicNumber > 0; ++i) {
