@@ -33,6 +33,9 @@ button {
 button:hover {
   border-color: var(--input-light-border-color);
 }
+a {
+  font-size: small;
+}
 @media (prefers-color-scheme: light) {
   :root {
     color: var(--dark-color);

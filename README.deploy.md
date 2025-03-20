@@ -1,14 +1,23 @@
 # Install
-```
+```shell
 $ pnpm install
 ```
 # Build
-```
+## pop-os
+```shell
 $ pnpm build
 ```
-# Deploy
+## tilde.team
+```shell
+$ pnpm build --base=/~padeso/numeral-converter --outDir=dist/~padeso
 ```
+# Deploy
+## pop-os
+```shell
 $ sudo rm /var/www/html/numeral-converter/assets/*
-$ sudo cp -r ./dist/numeral-converter/* /var/www/html/numeral-converter/
-$ sudo apachectl restart
+$ sudo rcp -r  ./dist/numeral-converter /var/www/html/numeral-converter
+```
+## tilde.team
+```shell
+rcp -r  './dist/~padeso/*' tilde.team:~/public_html/numeral-converter
 ```

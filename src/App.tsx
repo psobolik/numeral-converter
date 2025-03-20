@@ -54,6 +54,7 @@ function App() {
         </div>
       </div>
       <button onClick={onClear}>Clear</button>
+      <p><a href={"https://github.com/psobolik/numeral-converter"}>Source</a></p>
     </div>
   )
 }
