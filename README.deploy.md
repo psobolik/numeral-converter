@@ -15,7 +15,7 @@ $ pnpm build --base=/~padeso/numeral-converter --outDir=dist/~padeso
 ## pop-os
 ```shell
 $ sudo rm /var/www/html/numeral-converter/assets/*
-$ sudo rcp -r  ./dist/numeral-converter /var/www/html/numeral-converter
+$ sudo rcp -r ./dist/numeral-converter/* /var/www/html/numeral-converter
 ```
 ## tilde.team
 ```shell

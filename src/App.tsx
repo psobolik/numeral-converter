@@ -1,27 +1,29 @@
-import {useRef, useState} from 'react'
+import React from 'react'
 import './App.css'
 import icon from '/icon.svg'
 import Converter from "./Converter.ts";
 
 function App() {
-  const [romanNumeralInput, setRomanNumeralInput] = useState<string>("");
-  const [arabicNumeralInput, setArabicNumeralInput] = useState<string>("");
-
-  const romanNumeralInputReference = useRef<HTMLInputElement>(null);
-  const arabicNumeralInputReference = useRef<HTMLInputElement>(null);
-
-  const onRomanKeyUp = () => {
-    const arabic = Converter.romanToArabic(romanNumeralInput);
-    setArabicNumeralInput(arabic ? arabic.toString() : "Invalid Roman Number");
-  }
-  const onArabicKeyUp = () => {
-    const roman = Converter.arabicToRoman(Number(arabicNumeralInput));
-    setRomanNumeralInput(roman ? roman : "Invalid Arabic Number");
-  }
+  const [romanNumeralInput, setRomanNumeralInput] = React.useState<string>("");
+  const [arabicNumeralInput, setArabicNumeralInput] = React.useState<string>("");
 
   const onClear = () => {
     setArabicNumeralInput("");
     setRomanNumeralInput("");
+  }
+
+  const onArabicInputChange = (value: string) => {
+    setArabicNumeralInput(value)
+
+    const roman = Converter.arabicToRoman(Number(value));
+    setRomanNumeralInput(roman ? roman : "Invalid Arabic Number");
+  }
+  const onRomanInputChange = (value: string) => {
+    const roman = value.toUpperCase();
+    setRomanNumeralInput(roman)
+
+    const arabic = Converter.romanToArabic(roman);
+    setArabicNumeralInput(arabic ? arabic.toString() : "Invalid Roman Number");
   }
 
   return (
@@ -35,21 +37,17 @@ function App() {
         <div className={"container"}>
           <label htmlFor={"roman"}>Arabic Numerals</label>
           <input id="arabic"
-                 ref={arabicNumeralInputReference}
                  title="Arabic Numeral"
                  value={arabicNumeralInput}
-                 onKeyUp={onArabicKeyUp}
-                 onChange={e => setArabicNumeralInput(e.target.value)}
+                 onChange={e => onArabicInputChange(e.target.value)}
           />
         </div>
         <div className={"container"}>
           <label htmlFor={"roman"}>Roman Numerals</label>
           <input id="roman"
-                 ref={romanNumeralInputReference}
                  title="Roman Numeral"
                  value={romanNumeralInput}
-                 onKeyUp={onRomanKeyUp}
-                 onChange={e => setRomanNumeralInput(e.target.value.toUpperCase())}
+                 onChange={e => onRomanInputChange(e.target.value)}
           />
         </div>
       </div>
